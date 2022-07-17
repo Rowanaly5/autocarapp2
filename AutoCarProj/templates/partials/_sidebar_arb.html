@@ -1,0 +1,51 @@
+{% load static %}
+
+<style>
+  
+</style>
+
+
+<nav class="col-md-2 d-none d-md-block bg-light sidebar text-right">
+  <div class="sidebar-sticky" >
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'homepage-arb'%}">
+          <span data-feather="home"></span>
+          الرئيسية <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+      <div class="dropdown">
+        <a class="btn  dropdown-toggle" style="color:black"href="#" role="button" id="dropdownMenuLink"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          JOBS
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'job-index-arb' %}">كل Jobs</a>
+          <a class="dropdown-item" href="{% url 'add-job-arb' %}">اضافة Job</a>
+        
+        </div>
+      </div>
+    </li> 
+    
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="btn  dropdown-toggle" style="color:black"href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           الفواتير
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'invoice-index-arb' %}">كل الفواتير</a>
+        
+        </div>
+      </div>
+    </li> 
+
+
+
+    </ul>
+
+  </div>
+</nav>

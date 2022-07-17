@@ -1,0 +1,120 @@
+{% extends 'base_arb.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10  text-right" dir="rtl" style="margin-left:50px">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'job-index-arb'%}"> عرض الكل </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'invoice-index-arb'%}">عرض كل الفواتير </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+ 
+  </div>
+
+  <div class="container">
+    {% include 'partials/_messages.html' %} {% if queryset.count %}
+
+
+    <div class="row">
+     
+      <div class="col-md-4">
+        
+        <div class="form-group">
+         
+          <br> <form action="{% url 'invoice-search-arb' %}" class="form-inline" method="get">
+
+          <div class="form-group mb-8">
+   
+               <h1>{% if queryset %}{{ queryset.customer_name }}{% else %} List of Books {% endif %}</h1>
+   
+          </div>
+   
+          <div class="form-group mx-sm-3 mb-2">
+   
+           <label for="" class="sr-only">search</label>
+   
+           <input name="search" type=""  class="form-control" id="" text-right dir="rtl" placeholder="بحث"  style="margin-left:240px ; width:300px">
+   
+   
+           <button type="submit" class="btn btn-success btn-sm" style="margin-left:40px">بحث</button>
+          </div>
+
+      </form>
+          </div>
+      </div>
+
+    <!--Table-->
+    <table class="table table-striped" text-right dir="rtl">
+      <thead class="thead-dark">
+      <tr>
+        <th> الفاتورة #</th>
+        <th> التاريخ</th>
+        <th> الاسم</th>
+        <th> التليفون</th>
+        <th> طريقةالدفع</th>
+        <th> اجمالي</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for job in page_obj%}
+      <tr>
+        <td>{{job.job_id}}</td>
+        <td>{{job.invoice_date}}</td>
+        <td>{{job.customer_name}}</td>
+        <td>{{job.customer_phone}}</td>
+        <td class="text-center">{{job.payment_method}}</td>
+        <td>{{job.total}}</td>
+
+        <td>
+          <a href="{% url 'invoice-edit-arb' job.job_id  %}" class="btn btn-secondary btn-sm">تعديل</a>
+        </td>
+        <td>
+        <a href="{% url 'invoice-detail-arb' job.job_id  %}"  class="btn btn-secondary btn-sm">عرض</a>
+        </td>
+       
+        <br>
+          </tr>
+
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<div class="pagination-container" >
+  <div class="">
+    صفحه {{page_obj.number}} من {{ page_obj.paginator.num_pages }}
+  </div>
+  <ul class="pagination align-right float-right mr-auto">
+    {% if page_obj.has_previous %}
+    <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a class="page-link" href="?page=1">&laquo; 1</a></li>
+    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">السابق</a></li>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">التالي</a></li>
+    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a></li>
+    {% endif %}
+
+
+    </ul>
+  {% endif %}
+  <br><br><br>
+</div>
+</div>
+</div>
+
+{% endblock content %}

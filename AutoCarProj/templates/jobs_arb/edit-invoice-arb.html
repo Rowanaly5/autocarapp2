@@ -1,0 +1,128 @@
+{% extends 'base_arb.html' %}
+ {% block content %}
+
+
+ <div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10  text-right" dir="rtl" style="margin-left:50px">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'job-index-arb'%}"> عرض الكل  </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'invoice-index-arb'%}"> عرض كل الفواتير </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="card text-right" dir="rtl">
+    <div class="card-body">
+      <form action="{% url 'invoice-edit-arb' job.job_id %}" method="post" class="form-inline">
+        {% include 'partials/_messages.html'%} {% csrf_token %}
+        <div class="form-group col-md-6 " >
+            <label for=""  style="padding-left:90px">اسم العميل   </label>
+            <input type="text"  class="form-control form-control-sm" name="customer_name" style="margin-left:92px" value="{{values.customer_name}}"/>
+        </div>
+          <div class="form-group col-md-6  ">
+            <label for="" style="padding-left:92px">رقم التليفون</label>
+            <input type="text"  class="form-control form-control-sm" name="customer_phone" style="margin-left:50px" value="{{values.customer_phone}}"/>
+          </div>
+          <br><br>  <br><br>
+          <div class="form-group col-md-6  ">
+            <label for=""style="padding-left:118px">العنوان</label>
+            <input type="text"  class="form-control form-control-sm" name="customer_address" style="margin-left:80px" value="{{values.customer_address}}"/>
+          </div>
+          <div class="form-group col-md-6  ">
+            <label for=""style="padding-left:128px">الايميل</label>
+            <input type="email"  class="form-control form-control-sm" name="customer_email" style="margin-left:50px"  value="{{values.customer_email}}"/>
+          </div>
+          <br><br>  <br><br>
+
+          <div class="form-group col-md-6  ">
+            <label for="" style="padding-left:111px">الموديل</label>
+            <input type="text"  class="form-control form-control-sm" name="car_model" style="margin-left:135px" value="{{values.car_model}}"/>
+          </div>
+          <div class="form-group col-md-6  ">
+            <label for=""  style="padding-left:119px">الشاسيه</label>
+            <input type="text"  class="form-control form-control-sm" name="car_chassis"style="margin-left:85px" value="{{values.car_chassis}}"/>
+          </div>
+
+          <br><br>  <br><br>
+
+          <div class="form-group col-md-6  ">
+            <label for=""  style="padding-left:88px">رقم العربية</label>
+            <input type="text"  class="form-control form-control-sm" name="car_number"style="margin-left:120px" value="{{values.car_number}}"/>
+          </div>
+          <div class="form-group col-md-6  ">
+            <label for="" style="padding-left:123px">الميلات</label>
+            <input type="text"  class="form-control form-control-sm" name="car_mileage"  style="margin-left:82px"  value="{{values.car_mileage}}"/>
+          </div>
+
+          <br><br>  <br><br>
+            <div class="form-group  col-md-6 ">
+                <label for="" style="padding-left:123px">اللون</label>
+                <input type="text"  class="form-control form-control-sm" name="car_color" style="margin-left:142px" value="{{values.car_color}}"  >           
+          </div>
+   
+
+          <br><br>  <br><br>
+
+          <div class="form-group">
+            <label for=""  style="padding-left:130px">التعليقات</label>
+            <input type="text" style="margin-top:32px ;margin-left:115px ; width:450px"  class="form-control form-control-sm"
+            name="job_comments" rows="3"  value="{{values.job_comments}}"/>
+    
+          </div>
+
+          <div class="form-group">
+            <label for=""  style="padding-left:125px">الملاحظات </label>
+         
+            <input type="text" style="margin-top:32px ;margin-left:145px ; width:450px"  class="form-control form-control-sm"
+             name="job_notes" rows="3"  value="{{values.job_notes}}"/>
+          </div>
+        
+          <br><br>  <br><br>
+
+
+          <div class="form-group col-md-6 ">
+            <label for=""  style="padding-left:107px">خدمة 1</label>
+            <input type="text" class="form-control form-control-sm" style="margin-left:140px" name="service_one" value="{{values.service_one}}"/>
+          </div>
+  
+          <div class="form-group col-md-6 ">
+            <label for=""  style="padding-left:125px">المبلغ $ </label>
+              <input type="price"  class="form-control form-control-sm" style="margin-left:125px"  name="service_one_price" value="{{values.service_one_price}}"/>
+            </div>
+            <div class="form-group col-md-6 ">
+                <label for="" style="padding-left:107px">  خدمة 2 </label>
+                <input type="text" class="form-control form-control-sm" style="margin-left:140px" name="service_two" value="{{values.service_two}}"/>
+          </div>
+  
+          <div class="form-group col-md-6 ">
+            <label for="" style="padding-left:125px">المبلغ $ </label>
+              <input type="price"  class="form-control form-control-sm" style="margin-left:125px"  name="service_two_price" value="{{values.service_two_price}}"/>
+            </div>
+<br><br><br>
+<div class="form-group col-md-6 ">
+    <label for="" style="padding-left:95px">الاجمالي </label>
+    <input  id="total" class="form-control form-control-sm" style="margin-left:165px" name="total" value="{{values.total}}"/>
+    </div>              <a href="javascript:sumInputs()">احسب</a>
+  
+  </DIV>
+          <input
+          type="submit"
+          value="حفظ"
+          class="btn btn-primary btn-primary-sm  col-md-8"
+          style="margin-right:172px ; width200px"
+        />          <br><br> 
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'homepage'%}">
+          <span data-feather="home"></span>
+          Dashboard <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <a class="btn  dropdown-toggle" href="#" style="color:black"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'profile' %}">Show Profile</a>
+            <a class="dropdown-item" href="{% url 'profile-update' %}">Update Profile</a>
+          
+          </div>
+        </div>
+      </li> 
+      <li class="nav-item">
+      <div class="dropdown">
+        <a class="btn  dropdown-toggle" href="#"  style="color:black" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          JOBS
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'job-index' %}">All Jobs</a>
+          <a class="dropdown-item" href="{% url 'add-job' %}">Add Job</a>
+        
+        </div>
+      </div>
+    </li> 
+    
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="btn  dropdown-toggle" href="#" style="color:black"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INVOICES
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'invoice-index' %}">All Invoices</a>
+        
+        </div>
+      </div>
+    </li> 
+
+
+
+    </ul>
+
+  </div>
+</nav>

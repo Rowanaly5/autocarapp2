@@ -1,0 +1,126 @@
+
+{% extends 'base_arb.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-10  text-right" dir="rtl" style="margin-left:50px">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'job-index-arb'%}"> عرض الكل  </a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="{% url 'invoice-index-arb'%}"> عرض كل الفواتير </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div>       
+      </div> 
+      <div class="col-md-2">
+        <a href="#" class="btn btn-primary">طباعة الفاتورة</a>   
+      </div>
+    </div>
+</div>
+
+    <br><br>        
+  <h4 class="display-4 text-center"> فاتورة رقم   {{job.job_id }} <span class="sr-only">(current)</span></h4>
+
+  <br>
+
+    <div class="card text-right" dir="rtl" >
+      <div class="card-body">
+    <table class="table table-striped">
+      <thead class="thead-dark "  >   
+ 
+               <tr>
+                 <th> رقم الفاتورة </th>
+                 <td style="padding-right:40px">{{job.job_id}}</td>
+                </tr> 
+               <tr>
+                <th>التاريخ</th>
+                <td style="padding-right:40px">{{job.invoice_date}}</td>
+              </tr> 
+              <tr> 
+               <tr> 
+                 <th>اسم العميل </th>
+                 <td style="padding-right:40px">{{ job.customer_name  }}</td>
+               </tr>  
+               <tr>
+                 <th>رقم التليفون </th>
+                 <td style="padding-right:40px">{{job.customer_phone}}</td> 
+               </tr>  
+               <tr>
+                 <th>العنوان </th>
+                 <td style="padding-right:40px">{{job.customer_address}}</td>
+               </tr>  
+               <tr>
+                 <th> الايميل</th>
+                 <td style="padding-right:40px">{{job.customer_email}}</td>
+               </tr>  
+               <tr>
+                 <th> الموديل </th>
+                 <td style="padding-right:40px">{{job.car_model}}</td>
+               </tr>
+               <tr>
+                 <th> الشاسيه </th>
+                 <td style="padding-right:40px">{{job.car_chassis}}</td>
+               </tr> 
+               <tr>
+                 <th>رقم العربية </th>
+                 <td style="padding-right:40px">{{job.car_number}}</td>
+               </tr> 
+               <tr>
+                 <th> الميلات </th>
+                 <td style="padding-right:40px">{{job.car_mileage}}</td>
+               </tr> 
+               <tr>
+                 <th> اللون </th>
+                 <td style="padding-right:40px">{{job.car_color}}</td>
+               </tr>
+               <tr>
+                 <th> Job تاريخ </th>
+                 <td style="padding-right:40px">{{job.job_date}}</td>
+               </tr>  
+               <tr>
+                 <th>التعليقات</th>
+                 <td style="padding-right:40px">{{job.job_comments}}</td>
+               </tr> 
+
+               <tr>
+                 <th> الملاحظات </th>
+                 <td style="padding-right:40px">{{job.job_notes}}</td>
+               </tr> 
+
+               <tr>
+                <th>خدمة 1</th>
+                <td style="padding-right:40px">{{job.service_one}}</td>
+              </tr> 
+              <tr>
+                <th>المبلغ </th>
+                <td style="padding-right:40px">{{job.service_one_price}}</td>
+              </tr> 
+              <tr>
+                <tr>
+                    <th>خدمة 2</th>
+                    <td style="padding-right:40px">{{job.service_two}}</td>
+                  </tr> 
+                  <tr>
+                    <th>المبلغ </th>
+                    <td style="padding-right:40px">{{job.service_two_price}}</td>
+                  </tr> 
+                  <tr>
+                <th>الاجمالي </th>
+                <td style="padding-right:40px">{{job.total}}  </td>
+              </tr> 
+ 
+            </thead>
+          </table>
+  
+          </div>
+        </div></div>
+  
+  {% endblock content %}

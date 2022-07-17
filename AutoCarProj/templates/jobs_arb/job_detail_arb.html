@@ -1,0 +1,109 @@
+
+{% extends 'base_arb.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10  text-right" dir="rtl" style="margin-left:50px">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'job-index-arb'%}"> عرض الكل  </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'invoice-index-arb'%}"> عرض كل الفواتير </a>
+          </li>
+        </ol>
+        </nav>
+        <br>
+
+      </div>
+
+      <div>       
+      </div> 
+
+      <div class="col-md-2">
+        <a href="#" class="btn btn-primary">Print Job </a>   
+      </div>
+
+      <div class="col-md-2">
+        <a href="{% url 'invoice-detail-arb' job.job_id  %}" class="btn btn-primary">انشاء فاتورة </a>   
+            
+      </div>
+
+    </div>
+</div>
+<h4 class="display-4 text-center text-right" dir="rtl">    Job رقم  {{job.job_id }} <span class="sr-only">(current)</span></h4>
+
+    <br>        
+
+
+    <div class="card">
+      <div class="card-body">
+  
+
+    <table class="table table-stripedtext-right" dir="rtl">
+      <thead class="thead-dark "  >   
+
+            <tr>
+                 <th> Job رقم </th>
+                 <td  style="padding-right:40px">{{job.job_id}}</td>
+                </tr>  
+               <tr> 
+                 <th>الاسم </th>
+                 <td  style="padding-right:40px">{{ job.customer_name  }}</td>
+               </tr>  
+               <tr>
+                 <th> التليفون </th>
+                 <td  style="padding-right:40px">{{job.customer_phone}}</td> 
+               </tr>  
+               <tr>
+                 <th> العنوان </th>
+                 <td  style="padding-right:40px">{{job.customer_address}}</td>
+               </tr>  
+               <tr>
+                 <th>الايميل</th>
+                 <td  style="padding-right:40px">{{job.customer_email}}</td>
+               </tr>  
+               <tr>
+                 <th> الموديل </th>
+                 <td  style="padding-right:40px">{{job.car_model}}</td>
+               </tr>
+               <tr>
+                 <th>الشاسبه </th>
+                 <td  style="padding-right:40px">{{job.car_chassis}}</td>
+               </tr> 
+               <tr>
+                 <th>رقم العربية </th>
+                 <td  style="padding-right:40px">{{job.car_number}}</td>
+               </tr> 
+               <tr>
+                 <th>الميلات </th>
+                 <td  style="padding-right:40px">{{job.car_mileage}}</td>
+               </tr> 
+               <tr>
+                 <th> اللون </th>
+                 <td  style="padding-right:40px">{{job.car_color}}</td>
+               </tr>
+               <tr>
+                 <th> التاريخ </th>
+                 <td  style="padding-right:40px">{{job.job_date}}</td>
+               </tr>  
+               <tr>
+                 <th>التعليقات</th>
+                 <td  style="padding-right:40px">{{job.job_comments}}</td>
+               </tr> 
+               <tr>
+                 <th> الملاحظات </th>
+                 <td  style="padding-right:40px">{{job.job_notes}}</td>
+               </tr>     
+ 
+           </thead>
+ 
+         </table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,138 @@
+{% extends 'base_arb.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10  text-right" dir="rtl" style="margin-left:0px">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'job-index-arb'%}"> عرض الكل  </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'invoice-index-arb'%}"> عرض كل الفواتير </a>
+          </li>
+        </ol>
+      </nav>
+    </div> 
+
+    <div class="col-md-2">
+      <a href="{% url 'add-job-arb'%}" class="btn btn-primary">Job اضافة </a>
+    </div>
+  </div>
+
+  <div class="container">
+    {% include 'partials/_messages.html' %} {% if queryset.count %}
+
+    <div class="row">
+     
+      <div class="col-md-4">
+        
+        <div class="form-group">
+         
+        <br> <form action="{% url 'job-search-arb' %}" class="form-inline" method="get">
+
+          <div class="form-group mb-8">
+   
+               <h1>{% if queryset %}{{ queryset.customer_name }}{% else %} List of Books {% endif %}</h1>
+   
+          </div>
+   
+          <div class="form-group mx-sm-3 mb-2">
+   
+           <label for="" class="sr-only">search</label>
+   
+           <input name="search" type=""  class="form-control text-right" dir="rtl" id="" placeholder="بحث"  style="margin-left:240px ; width:300px">
+   
+   
+           <button type="submit" class="btn btn-success btn-sm" style="margin-left:40px">بحث</button>
+          </div>
+
+        </form>
+            </div>
+        </div>
+
+       <!--Table-->
+       <table class="table table-striped  text-right" dir="rtl">
+        <thead class="thead-dark">   
+            <tr>
+        <th># رقم{{job_id}}</th>
+        <th> الاسم</th>
+        <th> رقم التليفون</th>
+        <th> الشاسيه</th>
+        <th> رقم العربية</th>
+        <th> اللون</th>
+        <th> التاريخ</th>
+        <th></th>
+        <th></th>
+        <th></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for job in page_obj%}
+      <tr>
+        <td>{{job.job_id}}</td>
+        <td>{{job.customer_name}}</td>
+        <td>{{job.customer_phone}}</td>
+        <td>{{job.car_chassis}}</td>
+        <td>{{job.car_number}}</td>
+        <td>{{job.car_color}}</td>
+        <td>{{job.job_date}}</td>
+        <td>
+        <a href="{% url 'job-edit-arb' job.job_id  %}" class="btn btn-secondary btn-sm">تعديل</a>
+        </td>
+        <td>
+        <a href="{% url 'job-detail-arb' job.job_id  %}"  class="btn btn-secondary btn-sm">عرض التفاصيل</a>
+        </td>
+        <td>
+          <a href="{% url 'job-delete-arb' job.job_id %}"  class="btn btn-secondary btn-sm">حذف </a>
+          </td>
+        <br>
+          </tr>
+    
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+    <div class="pagination-container >
+    <div class="">
+      صفحه {{page_obj.number}} من {{ page_obj.paginator.num_pages }}
+    </div>
+    <ul class="pagination align-right float-right mr-auto">
+      {% if page_obj.has_previous %}
+      <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a class="page-link" href="?page=1">&laquo; 1</a></li>
+      <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">السابق</a></li>
+      {% endif %}
+
+      {% if page_obj.has_next %}
+      <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">التالي</a></li>
+      <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a></li>
+      {% endif %}
+
+
+      </ul>
+    {% endif %}
+    <br><br><br>
+  </div>
+</div>
+</div>
+
+<script src="{% static 'js/searchExpenses.js' %}"></script>
+
+
+
+
+
+
+
+{% endblock content %}

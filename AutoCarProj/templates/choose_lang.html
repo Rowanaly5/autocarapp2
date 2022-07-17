@@ -1,0 +1,74 @@
+{% load static  %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Auto Car   {% block title %} {% endblock %}</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/language.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-grid.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-grid.min.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-reboot.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-reboot.min.css' %} " rel="stylesheet">
+    <link href="{% static 'jquery/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'jquery/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'jquery/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+
+  </head>
+{% block content %}
+
+
+<div class="container">
+  <div class="card hovercard">
+    <img   alt=""/>
+    <div class="avatar">
+        <img src="{{user.profile.profile_image.url}}"alt=""/>
+    </div>
+    
+    
+    <div class="info">
+        <div class="title">
+        Welcome
+        </div>
+        <div class="desc">         
+          <h2>{{user.first_name}} {{user.last_name}}</h2>
+        </div>
+        <div class="desc">Please Choose Language</div>
+        <div class="desc">من فضلك اختر اللغة</div>
+    </div>
+    <div class="bottom">
+      <a href="{% url 'homepage-arb'%}" class="btn btn-primary my-2">اللغة العربية</a>
+      <a href="{% url 'homepage'%}"class="btn btn-dark  my-2">English</a>  
+      </div>
+      <br>
+  </div>
+  </div>
+  
+  
+
+</main>
+
+{% endblock %}
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+     <script src="{% static 'jquery/jquery-3.6.0.min.js' %}"></script>
+     <script src="{% static 'jquery/jquery-ui.js' %}"></script>
+     <script src="{% static 'jquery/myjs.js' %}"></script>
+     </body>
+</html>

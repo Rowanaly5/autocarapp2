@@ -1,0 +1,80 @@
+{% load static  %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Auto Car   {% block title %} {% endblock %}</title>
+
+
+<!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-grid.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-grid.min.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-reboot.css' %} " rel="stylesheet">
+    <link href="{% static 'css/bootstrap-reboot.min.css' %} " rel="stylesheet">
+    <link href="{% static 'css/main.css'%}" rel="stylesheet">
+    <link href="{% static 'jquery/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'jquery/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'jquery/jquery-ui.theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+<a  class="navbar-brand col-sm-3 col-md-2 mr-0 " href="{% url 'homepage'%}">
+<img src="{% static 'img/logo.jpeg'%}" alt="HTML tutorial" style="width:140px;height:42px;"></a>
+<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap mt-3 ml-2">
+          <form action="{% url  'logout' %}" method="POST">
+            {% csrf_token %}
+            <input
+              class="text text-capitalize"
+              type="submit"
+              value="Sign out"
+            />
+          </form>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        {% include 'partials/_sidebar.html'%}
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            {% block content %} 
+            
+            {% endblock %}
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+     <script src="{% static 'jquery/jquery-3.6.0.min.js' %}"></script>
+     <script src="{% static 'jquery/jquery-ui.js' %}"></script>
+
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  </body>
+</html>

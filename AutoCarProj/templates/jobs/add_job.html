@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+ {% block content %}
+
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'job-index'%}"> All Jobs </a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'invoice-index'%}"> All Invoices </a>
+      </li>
+    </ol>
+  </nav>
+
+  <div class="card">
+    <div class="card-body">
+
+      <form action="{% url 'add-job' %}" method="post" class="form-inline">
+        {% include 'partials/_messages.html'%} {% csrf_token %}
+
+        <div class="form-group col-md-6 " >
+          <label for="" >Customer Name   </label>
+          <input type="text"  class="form-control form-control-sm" name="customer_name" style="margin-left:92px"  value="{{values.customer_name}}"/>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="">Customer Phone</label>
+            <input type="text"  class="form-control form-control-sm" name="customer_phone" style="margin-left:50px" value="{{values.customer_phone}}"/>
+          </div>
+          <br><br>  <br><br>
+
+          <div class="form-group  col-md-6  ">
+            <label for="">Customer Address</label>
+            <input type="text"  class="form-control form-control-sm" name="customer_address" style="margin-left:80px" value="{{values.customer_address}}"/>
+          </div>
+          <div class="form-group  col-md-6  ">
+            <label for="">Customer E-Mail</label>
+            <input type="email"  class="form-control form-control-sm" name="customer_email" style="margin-left:50px" value="{{values.customer_email}}"/>
+          </div>
+          <br><br>  <br><br>
+
+          <div class="form-group  col-md-6  ">
+            <label for="">Car Model</label>
+            <input type="text"  class="form-control form-control-sm" name="car_model" style="margin-left:135px" value="{{values.car_model}}"/>
+          </div>
+          <div class="form-group  col-md-6  ">
+            <label for="">Car Chassis</label>
+            <input type="text"  class="form-control form-control-sm" name="car_chassis"style="margin-left:85px"  value="{{values.car_chassis}}"/>
+          </div>
+          <br><br>  <br><br>
+
+          <div class="form-group  col-md-6  ">
+            <label for="">Car Number</label>
+            <input type="text"  class="form-control form-control-sm" name="car_number" style="margin-left:120px" value="{{values.car_number}}"/>
+          </div>
+          <div class="form-group  col-md-6 " >
+            <label for="">Car Mileage</label>
+            <input type="text"  class="form-control form-control-sm" name="car_mileage" style="margin-left:82px"  value="{{values.car_mileage}}"/>
+          </div>
+          <br><br>  <br><br>
+
+          <div class="form-group  col-md-6 ">
+            <label for="">Car Color</label>
+            <input type="text"  class="form-control form-control-sm" name="car_color" style="margin-left:142px" value="{{color.car_color}}"  >           
+          </div>
+          <div class="form-group  col-md-6 ">
+            {{ form.job_date|as_crispy_field }}
+          </div>
+          <br><br>  <br><br>
+
+          <div class="form-group  col">
+            <label for="">Job Comments</label>
+            <textarea  style="margin-left:100px ; width:450px"  class="form-control form-control-sm" name="job_comments"
+             id="exampleFormControlTextarea1" rows="5"  value="{{values.job_comments}}"></textarea>
+          </div>
+
+          <div class="form-group col">
+            <label for="">Job Notes </label>
+            <textarea  style="margin-top:32px ;margin-left:132px ; width:450px"  class="form-control form-control-sm" name="job_notes"
+             id="exampleFormControlTextarea1" rows="3"  value="{{values.job_notes}}"></textarea>
+          </div>
+          <br><br>
+          <div class="form-group col-md-6  ">
+            {{ form.invoice_date|as_crispy_field }}
+          </div>
+  
+          <div class="form-group col-md-6 ">
+            {{ form.payment_method|as_crispy_field }}
+
+          </div>
+
+          <br><br>
+          <br><br>
+
+          <div class="form-group col-md-6 ">
+            <label for="">Sevice 1</label>
+            <input type="text" class="form-control form-control-sm" style="margin-left:140px" name="service_one" value="{{values.service_one}}"/>
+          </div>
+  
+          <div class="form-group col-md-6 ">
+            <label for="">Price $ </label>
+              <input type="price"  class="form-control form-control-sm amount qty" style="margin-left:125px"  name="service_one_price" value="{{values.service_one_price}}"/>
+            </div>
+            <div class="form-group col-md-6 ">
+            <label for="">Sevice 2</label>
+            <input type="text" class="form-control form-control-sm" style="margin-left:140px" name="service_two"  value="{{values.service_two}}"/>
+          </div>
+  
+          
+          <div class="form-group col-md-6 ">
+            <label for="">Price $ </label>
+              <input type="price"  class="form-control form-control-sm qty" style="margin-left:125px" name="service_two_price" value="{{values.service_two_price}}"/>
+            </div>
+            <br><br>
+            <br><br>
+            <div class="form-group col-md-6 ">
+              <label for="">Total </label>
+                <input  id="total" class="form-control form-control-sm" style="margin-left:165px" name="total" value="{{values.total}}"/>
+              </div>              <a href="javascript:sumInputs()">Sum</a>
+
+            </DIV>
+
+<div class="mx-auto">
+  <input
+    type="submit"
+    value="Save"
+    class="btn btn-primary btn-primary-sm btn pull-cen"
+   style = "width:350px"
+  />
+  </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+<script type="text/javascript">
+  window.sumInputs = function() {
+    var inputs = document.getElementsByClassName('qty'),
+        result = document.getElementById('total'),
+        sum = 0;            
+    
+    for(var i=0; i<inputs.length; i++) {
+        var ip = inputs[i];
+    
+        if (ip.name && ip.name.indexOf("total") < 0) {
+            sum += parseInt(ip.value) || 0;
+        }
+    
+    }
+    
+    result.value = sum;
+}
+      </script>
+
+
+{% endblock %}
